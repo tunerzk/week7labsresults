@@ -44,6 +44,10 @@ output "favorite_food" {
   value = local_file.favorite_food.content
 }
 
+################## FAVORITEFOOD.TXT ###########
+<img width="247" height="287" alt="image" src="https://github.com/user-attachments/assets/545861e2-e41b-4d6b-8654-560c5966e923" />
+
+
 
 
 
