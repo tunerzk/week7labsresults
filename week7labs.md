@@ -86,11 +86,51 @@ Work on the output for the index page's URL.
 FOLLOW UP QUESTIONS:
 When you are done, ideally you can answer the following:
 
-Is Terraform a good tool to provision buckets?
-Is Terraform an ideal tool to upload objects into buckets? Why or why not?
-Explain how you wrote the output (if you did). The output can be challenging.
+Is Terraform a good tool to provision buckets?  Yes — Terraform is excellent for provisioning buckets.
+Why?
+Buckets are infrastructure, and Terraform is designed to manage infrastructure declaratively. Terraform ensures buckets are consistent, repeatable, and version‑controlled. You can recreate the same bucket in any environment (dev, test, prod) with one command. Terraform handles IAM, lifecycle rules, versioning, and website hosting in a predictable way.
+
+
+
+Is Terraform an ideal tool to upload objects into buckets? Why or why not? When Creating buckets, Configuring bucket settings, Managing IAM policies, Enforcing naming conventions, and Automating infrastructure for teams. No — Terraform is not ideal for uploading objects.Terraform is infrastructure as code, not a file‑sync tool. Terraform uploads objects by treating them as resources, which causes problems.
+
+
+Explain how you wrote the output (if you did). The output can be challenging. Terraform outputs can be tricky because, You must reference attributes that exist after the resource is created. Some attributes are nested (e.g., google_storage_bucket.website). Outputs must match the exact attribute names from the provider.
+You must know the correct attribute (name, url, self_link, etc.). Some attributes don’t exist until after apply.
+
+
+
+
+
 IAM and access:
-Did you need uniform bucket-level access? Do you know what it does?
-Explain the IAM resource. Why is it needed? Was it hard to implement? Did the hints help?
-What setting did you change to enable static website hosting on the bucket?
+Did you need uniform bucket-level access? Do you know what it does? Yes — enabling uniform bucket‑level access is recommended.  It creates uniform bucket‑level access, Disables object‑level ACLs, Forces all permissions to be controlled through IAM only, Simplifies security, and Prevents accidental public access through ACLs. Without uniform access, objects can have their own ACLs, which is messy and insecure.
+
+
+
+
+Explain the IAM resource. Why is it needed? Was it hard to implement? Did the hints help? It is needed in order to grant public read access to all objects in the bucket. Required for static website hosting, and ensures anyone can load index.html in a browser. Without this IAM binding, your website would return 403 Forbidden.
+Most students struggle with:
+Choosing the correct IAM resource (member vs binding vs policy)
+Using the correct role (storage.objectViewer)
+Understanding that allUsers is a special identity
+
+
+What setting did you change to enable static website hosting on the bucket? website {
+  main_page_suffix = "index.html"
+  not_found_page   = "404.html"
+}
+This tells GCP:
+Serve index.html when someone visits the bucket URL
+Serve 404.html for missing pages
+You also must:
+Make the bucket public
+Upload the HTML files
+Use the website endpoint, not the storage API endpoint
+
+
 What changes could improve this infrastructure?
+Use a backend for Terraform state
+Enable versioning on the bucket
+Add lifecycle rules
+Use a module
+Add labels
