@@ -24,18 +24,54 @@ Assets provided: The 3 assets (the HTML files and the CSS file) are provided, so
 <img width="1889" height="882" alt="image" src="https://github.com/user-attachments/assets/aa9e034a-c3b1-4d86-b277-7bfee213f9e2" />
 <img width="1654" height="621" alt="image" src="https://github.com/user-attachments/assets/517e3366-689d-4546-ac13-738ddc657460" />
 
+##################### GCP VPC CREATED ######################
+<img width="1498" height="346" alt="image" src="https://github.com/user-attachments/assets/39dc3801-7246-4a1b-abf7-d7965d061315" />
+
+
+##################### KEVINSITE7 BUCKET CREATED ###########
+<img width="1472" height="724" alt="image" src="https://github.com/user-attachments/assets/eebc9bdd-71c0-4d9f-b98f-f084af7a6b6d" />
+
+######################### OUTPUTS.TF ##########################
+output "vpc_name" {
+  value = google_compute_network.vpc_network.name
+}
+
+output "subnet_name" {
+  value = google_compute_subnetwork.subnet.name
+}
+
+output "favorite_food" {
+  value = local_file.favorite_food.content
+}
+
+
 
 
 
 
 
 Want to make the pages fancier? Go ahead -- but realize this is a static site, so only client-side code is supported. This is totally optional and you should not attempt it until your proof of concept is working.
+<img width="1878" height="974" alt="image" src="https://github.com/user-attachments/assets/bade3a7e-8d31-404f-8f02-b0fd01664e0e" />
+<img width="1889" height="944" alt="image" src="https://github.com/user-attachments/assets/e70ce919-b099-46fd-9267-83913557ad0f" />
+
+
+
+
 
 Force destroy: On the bucket resource, make sure you set force_destroy = true to avoid headaches.
 
 Naming: The image filename must match what is referenced in the HTML document. Ask your group leader if you are unsure, but it will be fairly obvious when you look at the HTML.
 
 Making the bucket public: You will need to give the bucket the IAM role roles/storage.objectViewer with the member set to allUsers (we want everyone to be able to view the objects). Use the IAM member resource -- all 3 should work, but the IAM member is what is "correct" or "safe" in most cases.
+
+
+############### RUNNING URL'S ###############
+https://storage.googleapis.com/kevinsite7/index.html
+https://storage.googleapis.com/kevinsite7/404.html
+https://storage.googleapis.com/kevinsite7/style.css
+https://storage.googleapis.com/kevinsite7/906bb27a-747b-4faa-8f85-4c249699f915.jpg
+
+
 
 
 
