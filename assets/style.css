@@ -1,0 +1,84 @@
+/* Global layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    color: #2d3748;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    padding: 40px 20px;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.header p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+/* Card container */
+.card {
+    background: white;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Hero image */
+.hero-img {
+    width: 80%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Text */
+.intro {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #2d3748;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #4a5568;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Error page title */
+.error-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
